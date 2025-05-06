@@ -7,30 +7,35 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
             background-color: #310404;
         }
         h1 {
             color: #333;
             text-align: center;
-            margin-bottom: 30px;
+            margin: 20px 0;
+            padding: 0 10px;
         }
         .container {
+            width: 95%;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+        
+        /* Tabla responsive */
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
         }
         th, td {
-            padding: 12px 15px;
+            padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -40,6 +45,58 @@
         }
         tr:hover {
             background-color: #f5f5f5;
+        }
+        
+        /* Estilos para dispositivos móviles */
+        @media screen and (max-width: 600px) {
+            /* Convertir tabla en responsiva */
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            
+            /* Ocultar cabeceras pero mantenerlas para lectores de pantalla */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 15px;
+            }
+            
+            td {
+                /* Comportarse como "filas" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            
+            td:before {
+                /* Añadir etiquetas de datos para cada celda */
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+            
+            /* Añadir datos de contenido */
+            td:nth-of-type(1):before { content: "Fecha"; }
+            td:nth-of-type(2):before { content: "Nombre"; }
+            td:nth-of-type(3):before { content: "Monto"; }
+            td:nth-of-type(4):before { content: "Detalles"; }
+            
+            .container {
+                width: 90%;
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -59,9 +116,9 @@
             <tbody>
                 <tr>
                     <td>29/04/2025</td>
-                    <td>-luciana</td>
-                    <td>-17000</td>
-                    <td>NO ha pagado </td>
+                    <td>Luciana</td>
+                    <td>17000</td>
+                    <td>NO ha pagado</td>
                 </tr>
                 <tr>
                     <td>11/05/2025</td>
@@ -79,13 +136,13 @@
                     <td>5/05/2025</td>
                     <td>Hijo Giovanni</td>
                     <td>15000</td>
-                    <td>son de patricia</td>
+                    <td>Son de patricia</td>
                 </tr>
                 <tr>
                     <td>5/05/2025</td>
-                    <td>Emanuel  </td>
+                    <td>Emanuel</td>
                     <td>17000</td>
-                    <td>Son de patricia </td>
+                    <td>Son de patricia</td>
                 </tr>
             </tbody>
         </table>
